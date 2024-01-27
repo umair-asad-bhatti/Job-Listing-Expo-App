@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { db } from '../firebase/firebase'
 import { collection, addDoc } from 'firebase/firestore'
-import { Alert } from 'react-native'
+import { showAlert } from '../utils/utils'
 import { EmployeeModel } from "../models/EmployeeModel";
 import { docExistsOrNot } from "../utils/utils";
 export const useEmployees = () => {
@@ -11,40 +11,24 @@ export const useEmployees = () => {
     const [isSaving, setIsSaving] = useState(false)
     const saveEmployeeData = async (empName, empNumber, empPassword) => {
         if (!empPassword || !empName || !empNumber) {
-            Alert.alert('Warning', "Please fill all the fields", [
-                {
-                    text: 'close',
-                    style: 'cancel',
-                },
-            ]);
+            showAlert('Warning', 'Please fill all the fields')
             return
         }
-
         //store the data in firebase
         try {
             setIsSaving(true)
             //check if employee number is unique or not
             const DocExists = await docExistsOrNot('Employees', 'Employee Number', '==', empNumber)
             if (DocExists) {
-                Alert.alert('Employee Number is not available', "Provide another employee number", [
-                    {
-                        text: 'close',
-                        style: 'cancel',
-                    },
-                ]);
+                showAlert('Employee Number is not available', "Provide another employee number")
                 return
             }
             const Employee = new EmployeeModel(empName, empPassword, empNumber)
             await addDoc(collection(db, 'Employees'), { ...Employee })
             setIsSaving(false)
-            Alert.alert('Successful', "Employee Data has been saved successfully", [
-                {
-                    text: 'close',
-                    style: 'cancel',
-                },
-            ]);
+            showAlert('Successful', "Employee Data has been saved successfully")
         } catch (error) {
-            Alert.alert("Error occured check your internet connection")
+            showAlert('An Error Occured', 'Check you internet connection')
         } finally {
             setIsSaving(false)
             setEmpName('')

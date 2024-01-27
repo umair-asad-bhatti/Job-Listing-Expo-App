@@ -1,18 +1,21 @@
 import { Image, Text, View, ScrollView } from "react-native";
 // const adminImage = require('../assets/adminSide.jpeg')
-import { Information, Lock1, User } from "iconsax-react-native";
+import { Information, Lock1, User, UserAdd } from "iconsax-react-native";
 import InputField from "../components/InputField/InputField";
 import { useEmployees } from "../hooks/useEmployees";
 import { Button } from '../components/Button/Button'
 import LoadingIndicator from "../components/LoadingIndicator/LoadingIndicator";
 export const AdminForm = () => {
     const { empName, empNumber, empPassword, isSaving, setEmpName, setEmpNumber, setEmpPassword, saveEmployeeData } = useEmployees()
-    return <ScrollView className="h-full bg-none flex rounded-md">
-        <View className={'h-96 flex justify-center items-center'}>
-            <Text className="text-2xl font-extrabold text-center text-blue-500">Enter Employees Details</Text>
+    return <ScrollView className="h-full bg-none rounded-md" >
+        <View className={'flex h-96 mt-8 justify-end py-16 items-center gap-8'}>
+            {/* <Text className="text-2xl font-extrabold text-center text-blue-500">Enter Employees Details</Text> */}
+            <UserAdd
+                size="150"
+                color="#3b82f6"
+            />
             {/*<Image style={{ width: 150, height: 150 }} className={'rounded-full mx-auto my-6'} source={adminImage} />*/}
         </View>
-
         <View>
             <InputField type={'Enter Employee Name'} value={empName} setValue={setEmpName} >
                 <User size={25} color={'grey'} />
@@ -32,4 +35,5 @@ export const AdminForm = () => {
             }
         </Button>
     </ScrollView>
+
 }
