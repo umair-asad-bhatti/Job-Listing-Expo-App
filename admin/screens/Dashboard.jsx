@@ -26,7 +26,7 @@ export function Dashboard({ navigation }) {
             <View className='py-2 mt-8 mb-4'>
                 <Text className="text-4xl font-extrabold text-gray-600">Hey! <Text className='text-blue-500 underline'>Admin</Text></Text>
             </View>
-            <View className='shadow border border-gray-300 rounded-lg p-2'>
+            <View className='shadow border h-[70%] border-gray-300 rounded-lg p-2'>
                 <FlatList
                     ListHeaderComponent={() => <ListHeaderComponent col1={'Employee Name'} col2={'Employee ID'} />}
                     refreshing={isRefreshing}
@@ -38,7 +38,7 @@ export function Dashboard({ navigation }) {
                     ListEmptyComponent={() => <LoadingIndicator color={'black'} size={50} />}
                 />
             </View>
-            <View className='my-8'>
+            <View>
                 <View className='my-4'>
                     <Button disabled={false} onClickHandler={() => { signOut(auth); navigation.navigate("login") }}>
                         <Text className='text-white text-center'>Logout</Text>
