@@ -7,6 +7,7 @@ export const docExistsOrNot = async (collectionName, docField, operator, toBeCom
     const querySnapshot = await getDocs(q)
     return querySnapshot.size > 0;
 }
+
 export const showAlert = (title, message) => {
     Alert.alert(title, message, [
         {
