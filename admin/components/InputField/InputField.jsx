@@ -9,7 +9,7 @@ export default function InputField({ type, value, setValue, children }) {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
     return (
-        <View className="mb-4 border-gray-500  border-2 rounded-xl  flex flex-row justify-between py-2 px-2">
+        <View className="mb-4 rounded-md bg-gray-100  flex flex-row justify-between py-2 px-2">
             <View className={'flex-row '}>
                 <Text>{children}</Text>
                 <TextInput value={value} onChangeText={setValue} secureTextEntry={type.includes('password') ? !isPasswordVisible : false} placeholder={type} selectionColor={'black'} className="px-2" />
