@@ -6,7 +6,7 @@ import { auth } from '../firebase/firebase'
 export function Dashboard({ navigation }) {
     return (
         <View className='flex h-full bg-white '>
-            <Text className='my-4'>Dashboard</Text>
+            <Text className='my-4'>This is dashboard for admin where he will be able to see the details of all employees in future</Text>
             <Button disabled={false} onClickHandler={() => { signOut(auth); navigation.navigate("login") }}>
                 <Text className='text-white text-center'>Logout</Text>
             </Button>

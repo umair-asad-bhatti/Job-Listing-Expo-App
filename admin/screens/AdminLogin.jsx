@@ -11,7 +11,6 @@ export function AdminLogin({ navigation }) {
     const { email, setEmail, password, setPassword, isSaving, handleLogin } = useAdmin(navigation)
     const { user, isLoading } = useContext(UserContext)
     useEffect(() => {
-
         if (user)
             navigation.replace('dashboard')
     }, [])
